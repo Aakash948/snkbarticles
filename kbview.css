@@ -1,0 +1,133 @@
+    body{
+      color: #000000 !important;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 20px;
+    }
+
+    .article-header {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      margin-bottom: 25px;
+    }
+
+    .breadcrumb {
+      font-size: 14px;
+      color: #6b7280;
+      margin-bottom: 12px;
+    }
+
+    .article-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin: 0 0 15px;
+      color: #111827;
+    }
+
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    .article-content {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      line-height: 1.8;
+    }
+
+    .article-content h2 {
+      margin-top: 35px;
+      color: #111827;
+      font-size: 1.8rem;
+    }
+
+    .article-content ol,
+    .article-content ul {
+      padding-left: 25px;
+    }
+
+    .feedback-section,
+    .comments-section {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      margin-top: 25px;
+    }
+
+    .feedback-buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-yes {
+      background: #22c55e;
+      color: white;
+    }
+
+    .btn-no {
+      background: #ef4444;
+      color: white;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .star-rating {
+      display: flex;
+      gap: 8px;
+      margin-top: 15px;
+      font-size: 28px;
+      color: #d1d5db;
+      cursor: pointer;
+    }
+
+    .star.active,
+    .star:hover {
+      color: #fbbf24;
+    }
+
+    .comment-box {
+      width: 100%;
+      min-height: 120px;
+      padding: 15px;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      font-family: inherit;
+      resize: vertical;
+      margin-top: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .article-title {
+        font-size: 2rem;
+      }
+
+      .article-content,
+      .article-header,
+      .feedback-section,
+      .comments-section {
+        padding: 25px;
+      }
+    }

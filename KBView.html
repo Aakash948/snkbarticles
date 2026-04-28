@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dynamic Knowledge Article Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="kbview.css" media="screen">
+  <link rel="stylesheet" href="body.css" media="screen">
+</head>
+<body>
+  <div class="container">
+    <div class="article-header">
+      <div class="breadcrumb" id="category"></div>
+      <h1 class="article-title" id="title"></h1>
+      <div class="article-meta" id="meta"></div>
+    </div>
+
+    <div class="article-content" id="content"></div>
+
+    <div class="feedback-section">
+      <h3>Was this article helpful?</h3>
+      <div class="feedback-buttons">
+        <button class="btn btn-yes">👍 Yes</button>
+        <button class="btn btn-no">👎 No</button>
+      </div>
+
+      <h3 style="margin-top: 30px;">Rate this article</h3>
+      <div class="star-rating" id="starRating">
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+      </div>
+    </div>
+
+    <div class="comments-section">
+      <h3>Comments</h3>
+      <textarea class="comment-box" placeholder="Write your comment here..."></textarea>
+      <button class="btn btn-yes" style="margin-top: 15px;">Post Comment</button>
+    </div>
+  </div>
+
+  <script>
+    const article = {
+      category: 'IT | Microsoft',
+      title: 'Microsoft Outlook Issues',
+      articleId: 'KB99999999',
+      author: 'System Administrator',
+      readTime: '2 min read',
+      updated: 'Updated 7 years ago',
+      views: '1 view',
+      rating: 'Average rating 0/5',
+      content: `
+        <h2>Microsoft Outlook Issues</h2>
+        <p>This article explains how to use automatic replies in Outlook 2010 for Exchange accounts.</p>
+
+        <h2>Setting Up Automatic Replies</h2>
+        <ol>
+          <li>Click the <strong>File</strong> tab.</li>
+          <li>Select <strong>Automatic Replies</strong>.</li>
+          <li>Choose <strong>Send automatic replies</strong>.</li>
+          <li>Set the desired time range for automatic replies.</li>
+          <li>Enter your message for internal users.</li>
+          <li>Configure replies for external users if needed.</li>
+        </ol>
+
+        <h2>Using Rules With Automatic Replies</h2>
+        <ol>
+          <li>Click the <strong>File</strong> tab.</li>
+          <li>Select <strong>Automatic Replies</strong>.</li>
+          <li>Click <strong>Rules</strong> and then <strong>Add Rule</strong>.</li>
+          <li>Define the conditions for the rule.</li>
+          <li>Select the actions to perform.</li>
+          <li>Click <strong>OK</strong> to save.</li>
+        </ol>
+      `
+    };
+
+    document.getElementById('category').textContent = article.category;
+    document.getElementById('title').textContent = article.title;
+    document.getElementById('meta').innerHTML = `
+      <span>${article.articleId}</span>
+      <span>Author: ${article.author}</span>
+      <span>${article.readTime}</span>
+      <span>${article.updated}</span>
+      <span>${article.views}</span>
+      <span>${article.rating}</span>
+    `;
+    document.getElementById('content').innerHTML = article.content;
+
+    const stars = document.querySelectorAll('.star');
+    stars.forEach((star, index) => {
+      star.addEventListener('click', () => {
+        stars.forEach((s, i) => {
+          s.classList.toggle('active', i <= index);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
