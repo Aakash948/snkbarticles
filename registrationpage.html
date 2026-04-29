@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -99,28 +100,6 @@
       color: #cbd5e1;
     }
 
-    .google-btn {
-      width: 100%;
-      padding: 14px 20px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.08);
-      color: #fff;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      transition: all 0.3s ease;
-    }
-
-    .google-btn:hover {
-      background: rgba(255, 255, 255, 0.14);
-      transform: translateY(-2px);
-    }
-
     .divider {
       text-align: center;
       margin: 28px 0;
@@ -204,6 +183,13 @@
       font-weight: 600;
     }
 
+    .google-wrapper {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
     @media (max-width: 900px) {
       .signup-container {
         grid-template-columns: 1fr;
@@ -239,9 +225,24 @@
         <p>Sign up manually or continue with Google.</p>
       </div>
 
-      <button class="google-btn" onclick="signUpWithGoogle()">
-        <span>🔵</span> Continue with Google
-      </button>
+      <div id="g_id_onload"
+           data-client_id="20303005742-dhp7730tduf0ofe8ceoolog6ug7k482i.apps.googleusercontent.com"
+           data-context="signup"
+           data-callback="handleCredentialResponse"
+           data-auto_prompt="false">
+      </div>
+
+      <div class="google-wrapper">
+        <div class="g_id_signin"
+             data-type="standard"
+             data-shape="rectangular"
+             data-theme="outline"
+             data-text="signup_with"
+             data-size="large"
+             data-logo_alignment="left"
+             data-width="360">
+        </div>
+      </div>
 
       <div class="divider">OR</div>
 
@@ -270,19 +271,32 @@
       </form>
 
       <div class="login-link">
-        Already have an account? <a href="#">Sign In</a>
+        Already have an account? <a href="signin.html">Sign In</a>
       </div>
     </div>
   </div>
 
   <script>
-    function signUpWithGoogle() {
-      alert('Google Sign-Up integration can be added using Firebase Authentication or Google OAuth 2.0.');
+    function handleCredentialResponse(response) {
+      const token = response.credential;
+      const payload = JSON.parse(atob(token.split('.')[1]));
+
+      console.log('Google User Info:', payload);
+
+      localStorage.setItem('userName', payload.name || '');
+      localStorage.setItem('userEmail', payload.email || '');
+      localStorage.setItem('userPicture', payload.picture || '');
+      localStorage.setItem('isLoggedIn', 'true');
+
+      alert(`Welcome, ${payload.name}! Redirecting to your dashboard...`);
+      window.location.href = 'mainpage.html';
     }
 
     document.getElementById('signupForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
+      const fullName = document.getElementById('fullname').value.trim();
+      const email = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value;
       const confirmPassword = document.getElementById('confirmPassword').value;
 
@@ -291,8 +305,12 @@
         return;
       }
 
-      alert('Account created successfully!');
-      this.reset();
+      localStorage.setItem('userName', fullName);
+      localStorage.setItem('userEmail', email);
+      localStorage.setItem('isLoggedIn', 'true');
+
+      alert('Account created successfully! Redirecting...');
+      window.location.href = 'mainpage.html';
     });
   </script>
 </body>
