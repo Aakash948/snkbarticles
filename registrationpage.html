@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account | SNOWKbArticles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(-45deg, #081120, #0f1f3d, #0a2a43, #102a1f, #0d3b66);
+      background-size: 400% 400%;
+      animation: gradientFlow 15s ease infinite;
+      padding: 20px;
+      color: #fff;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .signup-container {
+      width: 100%;
+      max-width: 1100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    .left-panel {
+      padding: 60px;
+      background: linear-gradient(135deg, rgba(19,196,163,0.2), rgba(14,165,233,0.15));
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .left-panel h1 {
+      font-size: 3rem;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+
+    .left-panel p {
+      color: #dbeafe;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .feature-list {
+      list-style: none;
+    }
+
+    .feature-list li {
+      margin-bottom: 16px;
+      color: #e0f2fe;
+      font-size: 1rem;
+    }
+
+    .feature-list li::before {
+      content: '✓';
+      color: #63df4e;
+      font-weight: bold;
+      margin-right: 12px;
+    }
+
+    .right-panel {
+      padding: 50px;
+      background: rgba(8, 17, 32, 0.55);
+    }
+
+    .form-header {
+      margin-bottom: 32px;
+    }
+
+    .form-header h2 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    .form-header p {
+      color: #cbd5e1;
+    }
+
+    .google-btn {
+      width: 100%;
+      padding: 14px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .google-btn:hover {
+      background: rgba(255, 255, 255, 0.14);
+      transform: translateY(-2px);
+    }
+
+    .divider {
+      text-align: center;
+      margin: 28px 0;
+      position: relative;
+      color: #94a3b8;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 42%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .divider::before { left: 0; }
+    .divider::after { right: 0; }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #e2e8f0;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      border-color: #63df4e;
+      box-shadow: 0 0 0 4px rgba(99, 223, 78, 0.15);
+    }
+
+    input::placeholder {
+      color: #94a3b8;
+    }
+
+    .signup-btn {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #62d84e, #63df4e);
+      color: #032d42;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .signup-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(99, 223, 78, 0.35);
+    }
+
+    .login-link {
+      text-align: center;
+      margin-top: 24px;
+      color: #cbd5e1;
+    }
+
+    .login-link a {
+      color: #63df4e;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    @media (max-width: 900px) {
+      .signup-container {
+        grid-template-columns: 1fr;
+      }
+
+      .left-panel,
+      .right-panel {
+        padding: 35px;
+      }
+
+      .left-panel h1 {
+        font-size: 2.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <div class="left-panel">
+      <h1>Join SNOWKbArticles</h1>
+      <p>Create your account to access premium knowledge articles, expert insights, and ServiceNow best practices.</p>
+      <ul class="feature-list">
+        <li>Access curated ServiceNow knowledge articles</li>
+        <li>Save and bookmark favorite resources</li>
+        <li>Get personalized recommendations</li>
+        <li>Collaborate and share insights</li>
+      </ul>
+    </div>
+
+    <div class="right-panel">
+      <div class="form-header">
+        <h2>Create Account</h2>
+        <p>Sign up manually or continue with Google.</p>
+      </div>
+
+      <button class="google-btn" onclick="signUpWithGoogle()">
+        <span>🔵</span> Continue with Google
+      </button>
+
+      <div class="divider">OR</div>
+
+      <form id="signupForm">
+        <div class="form-group">
+          <label for="fullname">Full Name</label>
+          <input type="text" id="fullname" placeholder="Enter your full name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Create a strong password" required>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+        </div>
+
+        <button type="submit" class="signup-btn">Create Account</button>
+      </form>
+
+      <div class="login-link">
+        Already have an account? <a href="#">Sign In</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function signUpWithGoogle() {
+      alert('Google Sign-Up integration can be added using Firebase Authentication or Google OAuth 2.0.');
+    }
+
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+
+      if (password !== confirmPassword) {
+        alert('Passwords do not match.');
+        return;
+      }
+
+      alert('Account created successfully!');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
