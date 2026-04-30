@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Collaborative Knowledge Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(-45deg, #081120, #0f1f3d, #0a2a43, #102a1f);
+      background-size: 400% 400%;
+      animation: gradientFlow 18s ease infinite;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #62d84e, #0ea5e9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .icon-btn {
+      cursor: pointer;
+      font-size: 22px;
+    }
+
+    .profile-avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #62d84e, #0ea5e9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #032d42;
+      cursor: pointer;
+      overflow: hidden;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .hero {
+      text-align: center;
+      margin: 40px 0 60px;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      color: #cbd5e1;
+      font-size: 1.2rem;
+      margin-bottom: 35px;
+    }
+
+    .search-container {
+      max-width: 850px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .search-bar {
+      width: 100%;
+      padding: 22px 30px;
+      padding-right: 70px;
+      border-radius: 60px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(14px);
+      color: #fff;
+      font-size: 1.1rem;
+      outline: none;
+    }
+
+    .search-bar::placeholder { color: #cbd5e1; }
+
+    .search-btn {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 52px;
+      height: 52px;
+      border: none;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #62d84e, #0ea5e9);
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .quick-actions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .action-card, .article-item {
+      text-align: center;
+      padding: 24px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.06);
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .action-card:hover, .article-item:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,0.1);
+    }
+
+    .action-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 28px;
+      backdrop-filter: blur(14px);
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 24px;
+    }
+
+    .article-list, .online-users {
+      display: grid;
+      gap: 18px;
+    }
+
+    .article-item {
+      text-align: left;
+      padding: 20px;
+    }
+
+    .article-meta {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      margin-top: 8px;
+    }
+
+    .user-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .user-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #62d84e, #0ea5e9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #032d42;
+      font-weight: 700;
+    }
+
+    .chat-btn {
+      background: linear-gradient(135deg, #62d84e, #0ea5e9);
+      border: none;
+      padding: 10px 16px;
+      border-radius: 999px;
+      color: #032d42;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+      .main-grid,
+      .quick-actions {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">SNOWKbArticles</div>
+    <div class="header-actions">
+      <div class="icon-btn">🔔</div>
+      <div class="icon-btn">💬</div>
+      <div class="profile-avatar" id="profileAvatar">AD</div>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="hero">
+      <h1>Search any articles or ask any questions</h1>
+      <p>Find answers instantly, collaborate with developers, and solve issues faster.</p>
+
+      <div class="search-container">
+        <input type="text" class="search-bar" placeholder="How can I help you?">
+        <button class="search-btn">🔍</button>
+      </div>
+    </section>
+
+    <section class="quick-actions">
+      <div class="action-card" onclick="openArticleList()">
+        <div class="action-icon">📚</div>
+        <h3>Browse Articles</h3>
+      </div>
+      <div class="action-card" onclick="askAI()">
+        <div class="action-icon">🤖</div>
+        <h3>Ask AI Assistant</h3>
+      </div>
+      <div class="action-card" onclick="connectExperts()">
+        <div class="action-icon">👨‍💻</div>
+        <h3>Connect Experts</h3>
+      </div>
+    </section>
+
+    <div class="main-grid">
+      <div class="card">
+        <h2 class="section-title">Trending Articles</h2>
+        <div class="article-list" id="articleList"></div>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">Developers Online</h2>
+        <div class="online-users" id="onlineUsers"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const googleUser = JSON.parse(localStorage.getItem('googleUser'));
+
+    function getInitials(name) {
+      if (!name) return 'AD';
+      return name
+        .split(' ')
+        .map(part => part.charAt(0))
+        .slice(0, 2)
+        .join('')
+        .toUpperCase();
+    }
+
+    function updateProfileAvatar() {
+      const avatar = document.getElementById('profileAvatar');
+      const displayName = googleUser?.name || 'Aakash Dhiman';
+      avatar.textContent = getInitials(displayName);
+      avatar.title = displayName;
+    }
+
+    updateProfileAvatar();
+
+    function openArticleList() {
+      window.location.href = 'articleList.html';
+    }
+
+    function askAI() {
+      alert('AI Assistant feature coming soon!');
+    }
+
+    function connectExperts() {
+      document.getElementById('onlineUsers').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    const articles = [
+      { title: 'How to Configure ServiceNow SSO', category: 'Security', views: '2.4K views' },
+      { title: 'Integrating Azure Monitor with ServiceNow', category: 'Integration', views: '1.8K views' },
+      { title: 'Best Practices for Incident Management', category: 'ITSM', views: '3.1K views' },
+      { title: 'Creating Dynamic Forms in UI Builder', category: 'App Engine', views: '1.2K views' }
+    ];
+
+    const developers = [
+      { name: googleUser?.name || 'You', initials: getInitials(googleUser?.name || 'You') },
+      { name: 'Neetesh Kumar', initials: 'NK' },
+      { name: 'Priya Sharma', initials: 'PS' },
+      { name: 'Rahul Verma', initials: 'RV' }
+    ];
+
+    document.getElementById('articleList').innerHTML = articles.map(article => `
+      <div class="article-item">
+        <h3>${article.title}</h3>
+        <div class="article-meta">${article.category} • ${article.views}</div>
+      </div>
+    `).join('');
+
+    document.getElementById('onlineUsers').innerHTML = developers.map(dev => `
+      <div class="user-item">
+        <div class="user-info">
+          <div class="user-avatar">${dev.initials}</div>
+          <div>
+            <div>${dev.name}</div>
+            <small style="color:#94a3b8;">Online</small>
+          </div>
+        </div>
+        <button class="chat-btn" onclick="startChat('${dev.name}')">Chat</button>
+      </div>
+    `).join('');
+
+    function startChat(name) {
+      alert(`Starting chat with ${name}`);
+    }
+
+    document.querySelector('.search-btn').addEventListener('click', () => {
+      const query = document.querySelector('.search-bar').value.trim();
+      if (query) {
+        alert(`Searching for: ${query}`);
+      }
+    });
+  </script>
+</body>
+</html>
