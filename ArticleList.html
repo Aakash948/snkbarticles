@@ -100,46 +100,20 @@
 
   <script>
     const CONFIG = {
-      tokenUrl: 'https://dev328143.service-now.com/oauth_token.do',
       apiUrl: 'https://dev328143.service-now.com/api/1019898/knowledgelist_retrieve',
-      clientId: '38401e5b074c4b7eaf5cd5420e68ddc0',
-      clientSecret: 'NjaR`dVOEvnB}q;C{p4.{NCRn[N1E~}3',
       username: 'integration_user',
       password: 'Hack@7017'
     };
 
     let allArticles = [];
 
-    async function getAccessToken() {
-      const body = new URLSearchParams({
-        grant_type: 'password',
-        client_id: CONFIG.clientId,
-        client_secret: CONFIG.clientSecret,
-        username: CONFIG.username,
-        password: CONFIG.password
-      });
-
-      const response = await fetch(CONFIG.tokenUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: body
-      });
-
-      console(response);
-
-      if (!response.ok) throw new Error('Failed to retrieve access token');
-      const data = await response.json();
-      return data.access_token;
-    }
-
+    
     async function fetchKnowledgeArticles() {
       try {
-        const token = await getAccessToken();
-
         const response = await fetch(CONFIG.apiUrl, {
           method: 'GET',
           headers: {
-            'Authorization': `Bearer ${token}`,
+            'Authorization': 'Basic ' + btoa(`${CONFIG.username}:${CONFIG.password}`),
             'Accept': 'application/json'
           }
         });
