@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account | SNOWKbArticles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <link rel="stylesheet" href="registration.css" media="screen">
+</head>
+<body>
+  <div class="signup-container">
+    <div class="left-panel">
+      <h1>Join SNOWKbArticles</h1>
+      <p>Create your account to access premium knowledge articles, expert insights, and ServiceNow best practices.</p>
+      <ul class="feature-list">
+        <li>Access curated ServiceNow knowledge articles</li>
+        <li>Save and bookmark favorite resources</li>
+        <li>Get personalized recommendations</li>
+        <li>Collaborate and share insights</li>
+      </ul>
+    </div>
+
+    <div class="right-panel">
+      <div class="form-header">
+        <h2>Create Account</h2>
+        <p>Sign up manually or continue with Google.</p>
+      </div>
+
+      <div id="g_id_onload"
+           data-client_id="20303005742-dhp7730tduf0ofe8ceoolog6ug7k482i.apps.googleusercontent.com"
+           data-context="signup"
+           data-callback="handleCredentialResponse"
+           data-auto_prompt="false">
+      </div>
+
+      <div class="google-wrapper">
+        <div class="g_id_signin"
+             data-type="standard"
+             data-shape="rectangular"
+             data-theme="outline"
+             data-text="signup_with"
+             data-size="large"
+             data-logo_alignment="left"
+             data-width="360">
+        </div>
+      </div>
+
+      <div class="divider">OR</div>
+
+      <form id="signupForm">
+        <div class="form-group">
+          <label for="fullname">Full Name</label>
+          <input type="text" id="fullname" placeholder="Enter your full name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Create a strong password" required>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+        </div>
+
+        <button type="submit" class="signup-btn" id="signupBtn">Create Account</button>
+        <div id="formMessage" class="message"></div>
+      </form>
+
+      <div class="login-link">
+        Already have an account? <a href="signin.html">Sign In</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="registration.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Knowledge Articles | SNOWKbArticles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Articlelist.css" media="screen">
+</head>
+<body>
+  <header>
+    <div class="logo">SNOWKbArticles</div>
+    <div class="header-actions">
+      <div class="profile-avatar" id="profileAvatar">AD</div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="page-header">
+      <div class="page-title">
+        <h1>Knowledge Articles</h1>
+        <p>Browse and manage published knowledge base articles.</p>
+      </div>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search by KB number, description, or category...">
+      </div>
+    </div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>KB Number</th>
+            <th>Short Description</th>
+            <th>Category</th>
+            <th>State</th>
+          </tr>
+        </thead>
+        <tbody id="articlesTableBody">
+          <tr><td colspan="4" class="loading">Loading knowledge articles...</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="footer-info" id="recordCount"></div>
+  </div>
+  <script src="Articlelist.js"></script>
+</body>
+</html>

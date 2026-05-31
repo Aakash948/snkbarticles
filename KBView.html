@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Knowledge Article Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="kbview.css" media="screen">
+  
+</head>
+<body>
+  <header>
+    <div class="logo">SNOWKbArticles</div>
+    <div class="header-actions">
+      <div class="profile-avatar" id="profileAvatar">AD</div>
+    </div>
+  </header>
+  <div class="container">
+    <div class="article-header">
+      <div class="breadcrumb" id="category">Loading...</div>
+      <h1 class="article-title" id="title">Loading article...</h1>
+      <div class="article-meta" id="meta"></div>
+    </div>
+
+    <div class="article-content" id="content">
+      <p>Loading article details...</p>
+    </div>
+
+    <div class="feedback-section">
+      <h3>Was this article helpful?</h3>
+      <div class="feedback-buttons">
+        <button class="btn btn-yes">👍 Yes</button>
+        <button class="btn btn-no">👎 No</button>
+      </div>
+
+      <h3 style="margin-top: 30px;">Rate this article</h3>
+      <div class="star-rating" id="starRating">
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+      </div>
+    </div>
+
+    <div class="comments-section">
+      <h3>Comments</h3>
+      <textarea class="comment-box" placeholder="Write your comment here..."></textarea>
+      <button class="btn btn-yes" style="margin-top: 15px;">Post Comment</button>
+    </div>
+  </div>
+
+  <script src="kbview.js"></script>
+</body>
+</html>

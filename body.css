@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+    background: linear-gradient(-45deg, #081120, #0f1f3d, #0a2a43, #102a1f, #0d3b66);
+    background-size: 500% 500%;
+    animation: gradientFlow 18s ease infinite;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Smooth gradient animation */
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 50% 100%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    75% {
+        background-position: 50% 0%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}

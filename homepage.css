@@ -1,0 +1,168 @@
+/* Existing styles remain unchanged */
+.u-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background: rgba(5, 11, 26, 0.95);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.u-logo-image-1 {
+    margin-left: 0px;
+    height: 60px;
+    width: auto;
+}
+
+.hero-section {
+    text-align: center;
+    padding: 60px 20px 40px;
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    font-weight: 800;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    color: #c7d2fe;
+    max-width: 800px;
+    margin: 0 auto 50px;
+}
+
+.tabs-group-wrapper {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto 50px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50px;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+}
+
+.tabs-group {
+    display: flex;
+    position: relative;
+    z-index: 2;
+    flex-wrap: wrap;
+}
+
+.tab-overlay {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    height: calc(100% - 16px);
+    background: linear-gradient(135deg, #13c4a3, #0ea5e9);
+    border-radius: 40px;
+    transition: all 0.35s ease;
+    z-index: 1;
+}
+
+.tab-wrapper {
+    flex: 1;
+    min-width: 180px;
+}
+
+.arc-tab {
+    display: block;
+    padding: 16px 24px;
+    text-align: center;
+    cursor: pointer;
+    color: #ffffff;
+    font-weight: 600;
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s ease;
+}
+
+.arc-tab.active {
+    color: #ffffff;
+}
+
+.tab-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.content-card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.content-card h3 {
+    margin-top: 0;
+    font-size: 1.4rem;
+}
+
+.content-card p {
+    color: #d1d5db;
+    line-height: 1.6;
+}
+
+.get-started .naas-link.link--solid {
+    color: #032d42;
+}
+
+@media screen and (min-width: 1024px) {
+    .get-started a.naas-link {
+        font-size: 14px;
+        gap: 8px;
+        height: 36px;
+        padding: 0 20px;
+    }
+}
+
+.naas-link.link--solid {
+    background: linear-gradient(135deg, #62d84e, #63df4e);
+    border-radius: 500px;
+    color: #032d42;
+    flex-shrink: 0;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    gap: 12px;
+    height: 48px;
+    line-height: 1;
+    padding: 0 24px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.naas-link.link--solid:hover {
+    background: linear-gradient(135deg, #6ee85a, #74ea5f);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(99, 223, 78, 0.35);
+}
+.naas-link {
+    align-items: center;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    margin: 0 !important;
+    padding: 0;
+    text-decoration: none;
+}

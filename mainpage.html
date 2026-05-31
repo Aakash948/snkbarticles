@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Collaborative Knowledge Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="mainpage.css" media="screen">
+</head>
+<body>
+  <header>
+    <div class="logo">SNOWKbArticles</div>
+    <div class="header-actions">
+      <div class="icon-btn">🔔</div>
+      <div class="icon-btn">💬</div>
+      <div class="profile-avatar" id="profileAvatar">AD</div>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="hero">
+      <h1>Search any articles or ask any questions</h1>
+      <p>Find answers instantly, collaborate with developers, and solve issues faster.</p>
+
+      <div class="search-container">
+        <input type="text" class="search-bar" placeholder="How can I help you?">
+        <button class="search-btn">🔍</button>
+      </div>
+    </section>
+
+    <section class="quick-actions">
+      <div class="action-card" onclick="openArticleList()">
+        <div class="action-icon">📚</div>
+        <h3>Browse Articles</h3>
+      </div>
+      <div class="action-card" onclick="askAI()">
+        <div class="action-icon">🤖</div>
+        <h3>Ask AI Assistant</h3>
+      </div>
+      <div class="action-card" onclick="connectExperts()">
+        <div class="action-icon">👨‍💻</div>
+        <h3>Connect Experts</h3>
+      </div>
+    </section>
+
+    <div class="main-grid">
+      <div class="card">
+        <h2 class="section-title">Trending Articles</h2>
+        <div class="article-list" id="articleList"></div>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">Developers Online</h2>
+        <div class="online-users" id="onlineUsers"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="mainpage.js"></script>
+</body>
+</html>
