@@ -47,7 +47,7 @@ const CONFIG = {
       tbody.innerHTML = articles.map(article => `
         <tr>
           <td>
-            <a href="KBView.html?kb=${encodeURIComponent(article.number || '')}" class="kb-link">
+            <a href="kbview.html?kb=${encodeURIComponent(article.number || '')}" class="kb-link">
               ${article.number || ''}
             </a>
           </td>
